@@ -1,7 +1,13 @@
 from random import randint
 
+# Новый импорт.
+# Из модуля start_game_banner, который расположен в папке graphic_arts,
+# импортируем функцию run_screensaver().
+from graphic_arts.start_game_banner import run_screensaver
+
 
 def attack(char_name: str, char_class: str) -> str:
+    """Вычисление атаки."""
     message: str = ' нанёс урон противнику равный '
     if char_class == 'warrior':
         return f'{char_name} {message} {5 + randint(3, 5)}'
@@ -12,6 +18,7 @@ def attack(char_name: str, char_class: str) -> str:
 
 
 def defence(char_name: str, char_class: str) -> str:
+    """Вычисление защиты."""
     if char_class == 'warrior':
         return f'{char_name} блокировал {10 + randint(5, 10)} урона'
     if char_class == 'mage':
@@ -21,6 +28,7 @@ def defence(char_name: str, char_class: str) -> str:
 
 
 def special(char_name: str, char_class: str) -> str:
+    """Финальные силы."""
     message: str = ' применил специальное умение '
     if char_class == 'warrior':
         return f'{char_name} {message}«Выносливость {80 + 25}»'
@@ -31,6 +39,7 @@ def special(char_name: str, char_class: str) -> str:
 
 
 def start_training(char_name: str, char_class: str) -> str:
+    """Тренеровочный процесс."""
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
     if char_class == 'mage':
@@ -55,6 +64,7 @@ def start_training(char_name: str, char_class: str) -> str:
 
 
 def choice_char_class() -> str:
+    """Выбор персонажа."""
     approve_choice: str = ''
     char_class: str = ''
     while approve_choice != 'y':
@@ -76,7 +86,8 @@ def choice_char_class() -> str:
     return char_class
 
 
-def main() -> None:
+if __name__ == '__main__':
+    run_screensaver()
     print('Приветствую тебя, искатель приключений!')
     print('Прежде чем начать игру...')
     char_name: str = input('...назови себя: ')
@@ -87,5 +98,3 @@ def main() -> None:
     char_class: str = choice_char_class()
     print(start_training(char_name, char_class))
 
-
-main()
